@@ -1,9 +1,13 @@
 .form-tabs {
   box-sizing: border-box;
-  width: 50%;
+  width: 100%;
   min-width: 0;
   margin: 0 auto;
   padding: 0rem 1rem;
+
+  @media (min-width: 1280px) {
+    width: 50%;
+  }
 
   &__sticky {
     position: sticky;
