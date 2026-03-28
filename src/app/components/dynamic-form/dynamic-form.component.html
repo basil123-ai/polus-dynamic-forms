@@ -1,0 +1,93 @@
+<form class="dynamic-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  @for (field of schema; track trackField($index, field)) {
+    <div
+      class="dynamic-form__field"
+      [class.dynamic-form__field--checkbox]="field.type === 'checkbox'"
+      [class.dynamic-form__field--textarea]="field.type === 'textarea'"
+    >
+      @if (field.type === 'checkbox') {
+        <label class="dynamic-form__label dynamic-form__label--checkbox">
+          <input
+            type="checkbox"
+            [formControlName]="field.name"
+            [id]="field.name"
+            [attr.aria-required]="field.required ? true : null"
+          />
+          <span class="dynamic-form__label-text">
+            {{ field.label }}
+            @if (field.required) {
+              <span class="dynamic-form__required" title="required" aria-hidden="true">*</span>
+            }
+          </span>
+        </label>
+      } @else {
+        <label class="dynamic-form__label">
+          {{ field.label }}
+          @if (field.required) {
+            <span class="dynamic-form__required" title="required" aria-hidden="true">*</span>
+          }
+        </label>
+        @switch (field.type) {
+          @case ('email') {
+            <input
+              class="dynamic-form__control"
+              type="email"
+              [formControlName]="field.name"
+              [id]="field.name"
+              autocomplete="email"
+            />
+          }
+          @case ('password') {
+            <input
+              class="dynamic-form__control"
+              type="password"
+              [formControlName]="field.name"
+              [id]="field.name"
+              autocomplete="current-password"
+            />
+          }
+          @case ('textarea') {
+            <textarea
+              class="dynamic-form__control dynamic-form__control--textarea"
+              [formControlName]="field.name"
+              [id]="field.name"
+              rows="4"
+              autocomplete="off"
+            ></textarea>
+          }
+          @default {
+            <input
+              class="dynamic-form__control"
+              type="text"
+              [formControlName]="field.name"
+              [id]="field.name"
+              autocomplete="name"
+            />
+          }
+        }
+      }
+
+      @if (showFieldError(field.name)) {
+        <span class="dynamic-form__error" role="alert">{{ fieldErrorMessage(field.name) }}</span>
+      }
+    </div>
+  }
+
+  <div class="dynamic-form__actions">
+    <div class="dynamic-form__actions-start">
+      <button type="button" class="dynamic-form__btn dynamic-form__btn--danger" (click)="clearAllStored()">
+        Clear all stored data
+      </button>
+    </div>
+    <div class="dynamic-form__actions-end">
+      <button type="submit" class="dynamic-form__btn dynamic-form__btn--primary">Submit</button>
+      <button
+        type="button"
+        class="dynamic-form__btn dynamic-form__btn--ghost"
+        (click)="clearStoredAndReset()"
+      >
+        Clear saved
+      </button>
+    </div>
+  </div>
+</form>

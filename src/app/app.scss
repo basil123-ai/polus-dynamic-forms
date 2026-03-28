@@ -1,0 +1,13 @@
+:host.app {
+  display: block;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.app__main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+}

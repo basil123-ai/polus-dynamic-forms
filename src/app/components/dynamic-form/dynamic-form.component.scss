@@ -1,0 +1,146 @@
+.dynamic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    &--checkbox {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &--textarea {
+      align-items: stretch;
+    }
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color:  #1e293b;
+    font-family: 'Inter', sans-serif;
+
+    &--checkbox {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  &__label-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  &__required {
+    margin-left: 0.2em;
+    font-weight: 700;
+    font-size: 1em;
+    line-height: 0;
+    color: #dc2626;
+    text-decoration: none;
+    cursor: help;
+  }
+
+  &__control {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid  #cbd5e1;
+    border-radius: 0.375rem;
+    font-family: 'Inter', sans-serif;
+
+    &:focus-visible {
+      outline: 2px solid  #2563eb;
+      outline-offset: 1px;
+    }
+
+    &--textarea {
+      display: block;
+      width: 100%;
+      min-height: 6rem;
+      resize: vertical;
+      line-height: 1.5;
+    }
+  }
+
+  &__error {
+    font-size: 0.75rem;
+    color:  #b91c1c;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  &__actions-start {
+    flex: 0 0 auto;
+    margin-right: auto;
+  }
+
+  &__actions-end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+  &__btn {
+    padding: 0.45rem 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    &--primary {
+      background:  #2563eb;
+      color: #fff;
+
+      &:hover {
+        filter: brightness(1.05);
+      }
+    }
+
+    &--ghost {
+      background: transparent;
+      border-color:  #cbd5e1;
+      color: var(--dynamic-form-label, #1e293b);
+
+      &:hover {
+        background:  #f1f5f9;
+      }
+    }
+
+    &--danger {
+      color: #991b1b;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+
+      &:hover {
+        background: #fee2e2;
+      }
+    }
+  }
+}

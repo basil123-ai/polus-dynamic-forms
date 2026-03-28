@@ -1,0 +1,7 @@
+@if (toast.message$ | async; as msg) {
+  @if (msg) {
+    <div class="toast" role="status" aria-live="polite">
+      <span class="toast__text">{{ msg }}</span>
+    </div>
+  }
+}

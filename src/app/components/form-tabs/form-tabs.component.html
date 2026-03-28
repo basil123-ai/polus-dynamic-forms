@@ -1,0 +1,33 @@
+<div class="form-tabs">
+  <div class="form-tabs__sticky">
+    <header class="form-tabs__header">
+      <h1 class="form-tabs__title">{{'Dynamic forms'}}</h1>
+      <p class="form-tabs__subtitle">
+        {{'Each route uses DynamicFormComponent with a JSON schema. Values sync to FormStateService (signals + localStorage) when you change route or submit.'}}
+      </p>
+    </header>
+
+    <div class="form-tabs__tab-bar" role="tablist" aria-label="Form selection">
+      <a
+        class="form-tabs__tab"
+        role="tab"
+        routerLink="form-a"
+        routerLinkActive="form-tabs__tab--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{'Personal Information'}}
+      </a>
+      <a
+        class="form-tabs__tab"
+        role="tab"
+        routerLink="form-b"
+        routerLinkActive="form-tabs__tab--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{'Professional Information'}}
+      </a>
+    </div>
+  </div>
+
+  <router-outlet />
+</div>
