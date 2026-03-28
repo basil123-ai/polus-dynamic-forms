@@ -2,8 +2,6 @@
   @for (field of schema; track trackField($index, field)) {
     <div
       class="dynamic-form__field"
-      [class.dynamic-form__field--checkbox]="field.type === 'checkbox'"
-      [class.dynamic-form__field--textarea]="field.type === 'textarea'"
     >
       @if (field.type === 'checkbox') {
         <label class="dynamic-form__label dynamic-form__label--checkbox">
