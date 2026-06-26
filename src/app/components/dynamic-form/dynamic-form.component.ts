@@ -143,9 +143,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     if (!c?.errors || !c.touched) {
       return '';
     }
+
     if (c.errors['required']) {
       return 'This field is required.';
     }
+    
     if (c.errors['email']) {
       return 'Enter a valid email address.';
     }
