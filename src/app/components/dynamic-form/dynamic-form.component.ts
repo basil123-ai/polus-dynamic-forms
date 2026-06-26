@@ -137,7 +137,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return !!c && c.invalid && c.touched;
   }
 
-
+  /**
+   * 
+   * @param controlName 
+   * @returns 
+   */
   protected fieldErrorMessage(controlName: string): string {
     const c = this.form.get(controlName);
     if (!c?.errors || !c.touched) {
@@ -147,7 +151,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     if (c.errors['required']) {
       return 'This field is required.';
     }
-    
+
     if (c.errors['email']) {
       return 'Enter a valid email address.';
     }
