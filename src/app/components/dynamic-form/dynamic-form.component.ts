@@ -38,7 +38,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   constructor(
     private readonly _formState: FormStateService,
     private readonly toast: ToastService,
-    private readonly cdr: ChangeDetectorRef,
+    private readonly _cdr: ChangeDetectorRef,
     private readonly fb: FormBuilder,
   ) {}
 
@@ -50,7 +50,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
 
     this.valueChangesSub = this.form.valueChanges.subscribe(() => {
-      this.cdr.markForCheck();
+      this._cdr.markForCheck();
     });
 
     this.clearedAllSub = this._formState.clearedAll$.subscribe(() => {
@@ -75,13 +75,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-      this.cdr.markForCheck();
+      this._cdr.markForCheck();
       return;
     }
     const value = this.form.getRawValue() as FormValues;
     this._formState.setFormState(this.formId, value);
     this.submitted.emit(value);
-    this.cdr.markForCheck();
+    this._cdr.markForCheck();
   }
 
   clearStoredAndReset(): void {
@@ -92,13 +92,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   clearAllStored(): void {
     this._formState.clearAll();
     this.toast.show('All saved form data cleared.');
-    this.cdr.markForCheck();
+    this._cdr.markForCheck();
   }
 
   /** Rebuild empty controls (no persisted values). */
   resetToDefaults(): void {
     this.rebuildForm();
-    this.cdr.markForCheck();
+    this._cdr.markForCheck();
   }
 
   private rebuildForm(): void {
