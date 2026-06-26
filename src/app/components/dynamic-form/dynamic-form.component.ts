@@ -137,6 +137,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return !!c && c.invalid && c.touched;
   }
 
+
   protected fieldErrorMessage(controlName: string): string {
     const c = this.form.get(controlName);
     if (!c?.errors || !c.touched) {
