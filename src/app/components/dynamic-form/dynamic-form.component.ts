@@ -36,7 +36,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   private clearedAllSub = Subscription.EMPTY;
 
   constructor(
-    private readonly formState: FormStateService,
+    private readonly _formState: FormStateService,
     private readonly toast: ToastService,
     private readonly cdr: ChangeDetectorRef,
     private readonly fb: FormBuilder,
@@ -44,7 +44,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.rebuildForm();
-    const stored = this.formState.getFormState(this.formId);
+    const stored = this._formState.getFormState(this.formId);
     if (stored) {
       this.form.patchValue(stored, { emitEvent: false });
     }
@@ -53,7 +53,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       this.cdr.markForCheck();
     });
 
-    this.clearedAllSub = this.formState.clearedAll$.subscribe(() => {
+    this.clearedAllSub = this._formState.clearedAll$.subscribe(() => {
       this.resetToDefaults();
     });
   }
@@ -79,18 +79,18 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       return;
     }
     const value = this.form.getRawValue() as FormValues;
-    this.formState.setFormState(this.formId, value);
+    this._formState.setFormState(this.formId, value);
     this.submitted.emit(value);
     this.cdr.markForCheck();
   }
 
   clearStoredAndReset(): void {
-    this.formState.clearForm(this.formId);
+    this._formState.clearForm(this.formId);
     this.resetToDefaults();
   }
 
   clearAllStored(): void {
-    this.formState.clearAll();
+    this._formState.clearAll();
     this.toast.show('All saved form data cleared.');
     this.cdr.markForCheck();
   }
@@ -129,7 +129,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     if (!this.form) {
       return;
     }
-    this.formState.setFormState(this.formId, this.form.getRawValue() as FormValues);
+    this._formState.setFormState(this.formId, this.form.getRawValue() as FormValues);
   }
 
   protected showFieldError(controlName: string): boolean {
