@@ -91,7 +91,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   clearAllStored(): void {
     this._formState.clearAll();
-    this.toast.show('All saved form data cleared.');
+    this.toast.show('All saved form data cleared from here.');
     this._cdr.markForCheck();
   }
 
