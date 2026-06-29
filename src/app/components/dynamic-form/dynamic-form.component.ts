@@ -106,6 +106,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     console.log('newN8ntestFunction');
   }
 
+  newN8ntestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
 
   private rebuildForm(): void {
     const controls: Record<string, ReturnType<FormBuilder['control']>> = {};
