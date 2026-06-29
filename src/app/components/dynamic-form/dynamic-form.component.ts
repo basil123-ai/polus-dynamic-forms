@@ -43,11 +43,16 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   ) {}
 
   
-  newN8ntestFunction(): void {
+  
+  
+  
+  
+  
+  newN8nTestFunction(): void {
     console.log('newN8ntestFunction');
   }
 
-  newN8ntestFunction2(): void {
+  newN8nTestFunction2(): void {
     console.log('newN8ntestFunction');
   }
 
