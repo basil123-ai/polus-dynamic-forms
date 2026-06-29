@@ -44,7 +44,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   
   
-  
+  myFunction(): void {
+    console.log('test');
+  }
   
   
   
