@@ -42,6 +42,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
   ) {}
 
+  
+  newN8ntestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8ntestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
   ngOnInit(): void {
     this.rebuildForm();
     const stored = this._formState.getFormState(this.formId);
@@ -70,14 +79,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   saveToStore(): void {
     this.persistCurrentValue();
-  }
-
-  newN8ntestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8ntestFunction2(): void {
-    console.log('newN8ntestFunction');
   }
 
   onSubmit(): void {
