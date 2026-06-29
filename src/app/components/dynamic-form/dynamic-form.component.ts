@@ -58,6 +58,18 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  myFunction(): void {
+    console.log('test');
+  }
+  
+  newN8nTestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
   ngOnDestroy(): void {
     this.valueChangesSub.unsubscribe();
     this.clearedAllSub.unsubscribe();
@@ -109,19 +121,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
     this.form = this.fb.group(controls);
   }
-
-  myFunction(): void {
-    console.log('test');
-  }
-  
-  newN8nTestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8nTestFunction2(): void {
-    console.log('newN8ntestFunction');
-  }
-
 
   private createControl(field: FormFieldSchema) {
     const validators = [];
