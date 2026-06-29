@@ -72,6 +72,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.persistCurrentValue();
   }
 
+  newN8ntestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8ntestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
@@ -100,14 +108,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   resetToDefaults(): void {
     this.rebuildForm();
     this._cdr.markForCheck();
-  }
-
-  newN8ntestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8ntestFunction2(): void {
-    console.log('newN8ntestFunction');
   }
 
   private rebuildForm(): void {
