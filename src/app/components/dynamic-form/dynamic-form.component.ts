@@ -88,7 +88,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this._formState.clearForm(this.formId);
     this.resetToDefaults();
   }
-  
+
 
   clearAllStored(): void {
     this._formState.clearAll();
@@ -101,6 +101,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.rebuildForm();
     this._cdr.markForCheck();
   }
+
+  newN8ntestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
 
   private rebuildForm(): void {
     const controls: Record<string, ReturnType<FormBuilder['control']>> = {};
