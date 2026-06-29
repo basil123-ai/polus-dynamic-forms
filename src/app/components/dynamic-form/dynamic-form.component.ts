@@ -42,18 +42,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
   ) {}
 
-  myFunction(): void {
-    console.log('test');
-  }
-  
-  newN8nTestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8nTestFunction2(): void {
-    console.log('newN8ntestFunction');
-  }
-
   ngOnInit(): void {
     this.rebuildForm();
     const stored = this._formState.getFormState(this.formId);
@@ -170,4 +158,17 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
     return 'Invalid value.';
   }
+
+  myFunction(): void {
+    console.log('test');
+  }
+  
+  newN8nTestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
 }
