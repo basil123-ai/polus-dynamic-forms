@@ -88,6 +88,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this._formState.clearForm(this.formId);
     this.resetToDefaults();
   }
+  
 
   clearAllStored(): void {
     this._formState.clearAll();
