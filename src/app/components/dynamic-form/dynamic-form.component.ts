@@ -58,18 +58,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  myFunction(): void {
-    console.log('test');
-  }
-  
-  newN8nTestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8nTestFunction2(): void {
-    console.log('newN8ntestFunction');
-  }
-
   ngOnDestroy(): void {
     this.valueChangesSub.unsubscribe();
     this.clearedAllSub.unsubscribe();
@@ -170,4 +158,18 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
     return 'Invalid value.';
   }
+
+
+  myFunction(): void {
+    console.log('test');
+  }
+  
+  newN8nTestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
 }
