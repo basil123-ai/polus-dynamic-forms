@@ -102,6 +102,19 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this._cdr.markForCheck();
   }
 
+  myFunction(): void {
+    console.log('test');
+  }
+  
+  newN8nTestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
+
   private rebuildForm(): void {
     const controls: Record<string, ReturnType<FormBuilder['control']>> = {};
     for (const field of this.schema) {
@@ -158,18 +171,4 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }
     return 'Invalid value.';
   }
-
-
-  myFunction(): void {
-    console.log('test');
-  }
-  
-  newN8nTestFunction(): void {
-    console.log('newN8ntestFunction');
-  }
-
-  newN8nTestFunction2(): void {
-    console.log('newN8ntestFunction');
-  }
-
 }
