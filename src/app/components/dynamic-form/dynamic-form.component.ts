@@ -42,13 +42,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
   ) {}
 
-  
-  
   myFunction(): void {
     console.log('test');
   }
-  
-  
   
   newN8nTestFunction(): void {
     console.log('newN8ntestFunction');
