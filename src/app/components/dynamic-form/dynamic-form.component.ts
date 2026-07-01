@@ -36,24 +36,24 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   private clearedAllSub = Subscription.EMPTY;
 
   constructor(
-    private readonly formState: FormStateService,
+    private readonly _formState: FormStateService,
     private readonly toast: ToastService,
-    private readonly cdr: ChangeDetectorRef,
+    private readonly _cdr: ChangeDetectorRef,
     private readonly fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {
     this.rebuildForm();
-    const stored = this.formState.getFormState(this.formId);
+    const stored = this._formState.getFormState(this.formId);
     if (stored) {
       this.form.patchValue(stored, { emitEvent: false });
     }
 
     this.valueChangesSub = this.form.valueChanges.subscribe(() => {
-      this.cdr.markForCheck();
+      this._cdr.markForCheck();
     });
 
-    this.clearedAllSub = this.formState.clearedAll$.subscribe(() => {
+    this.clearedAllSub = this._formState.clearedAll$.subscribe(() => {
       this.resetToDefaults();
     });
   }
@@ -75,30 +75,31 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-      this.cdr.markForCheck();
+      this._cdr.markForCheck();
       return;
     }
     const value = this.form.getRawValue() as FormValues;
-    this.formState.setFormState(this.formId, value);
+    this._formState.setFormState(this.formId, value);
     this.submitted.emit(value);
-    this.cdr.markForCheck();
+    this._cdr.markForCheck();
   }
 
   clearStoredAndReset(): void {
-    this.formState.clearForm(this.formId);
+    this._formState.clearForm(this.formId);
     this.resetToDefaults();
   }
 
+
   clearAllStored(): void {
-    this.formState.clearAll();
-    this.toast.show('All saved form data cleared.');
-    this.cdr.markForCheck();
+    this._formState.clearAll();
+    this.toast.show('All saved form data cleared from here.');
+    this._cdr.markForCheck();
   }
 
   /** Rebuild empty controls (no persisted values). */
   resetToDefaults(): void {
     this.rebuildForm();
-    this.cdr.markForCheck();
+    this._cdr.markForCheck();
   }
 
   private rebuildForm(): void {
@@ -129,7 +130,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     if (!this.form) {
       return;
     }
-    this.formState.setFormState(this.formId, this.form.getRawValue() as FormValues);
+    this._formState.setFormState(this.formId, this.form.getRawValue() as FormValues);
   }
 
   protected showFieldError(controlName: string): boolean {
@@ -137,14 +138,38 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return !!c && c.invalid && c.touched;
   }
 
+  myFunction(): void {
+    console.log('test');
+  }
+  
+  newN8nTestFunction(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction2(): void {
+    console.log('newN8ntestFunction');
+  }
+
+  newN8nTestFunction3(): void {
+    console.log('newN8ntestFunction');
+  }
+
+
+  /**
+   * 
+   * @param controlName 
+   * @returns 
+   */
   protected fieldErrorMessage(controlName: string): string {
     const c = this.form.get(controlName);
     if (!c?.errors || !c.touched) {
       return '';
     }
+
     if (c.errors['required']) {
       return 'This field is required.';
     }
+
     if (c.errors['email']) {
       return 'Enter a valid email address.';
     }
